@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
-import { LoginResolver } from './contact-form/resolver/login.resolver';
+import { LoginResolver } from './resolver/login.resolver';
 
 @NgModule({
   declarations: [

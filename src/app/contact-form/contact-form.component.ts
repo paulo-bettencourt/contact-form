@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoginService } from '../services/login.service';
 
@@ -9,25 +9,14 @@ import { LoginService } from '../services/login.service';
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css']
 })
-export class ContactFormComponent implements OnInit {
+export class ContactFormComponent {
 
   form = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    console.log(
-      'Activated route data in Component:::',
-      this.activatedRoute.data
-    );
-    this.activatedRoute.data.subscribe((response: any) => {
-      console.log('PRODUCT FETCHING', response);
-      console.log('PRODUCT FETCHED');
-    });
-  }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   onSubmit() {
 
@@ -36,7 +25,7 @@ export class ContactFormComponent implements OnInit {
 
     if(username && password) {
       this.loginService.login(username, password).subscribe({
-        next: (data) => console.log(data),
+        next: (data) => {console.log("login executed", data), this.router.navigate(['dashboard'])},
         error: (err) => console.log(err),
         complete: () => console.log("complete")
       })
