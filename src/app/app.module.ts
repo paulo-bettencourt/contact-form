@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { LoginResolver } from './contact-form/resolver/login.resolver';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,11 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
