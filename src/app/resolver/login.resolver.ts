@@ -16,7 +16,7 @@ export class LoginResolver implements Resolve<Observable<any>> {
 
     this.loginService.loginUsernameAndPassword.subscribe((data: any) => {console.log("dados do user", data), this.data = data})
 
-    console.log('Called Get Product in resolver...', route);
+    console.log('Called Get Product in resolver...', this.data);
 
     return this.data;
   }

@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = this.route.snapshot.data;
+    console.log("resolver", this.data)
   }
 
 }
