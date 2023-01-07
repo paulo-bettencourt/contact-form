@@ -23,9 +23,15 @@ export class ContactFormComponent {
     let username = this.form.controls['username'].value;
     let password = this.form.controls['password'].value;
 
+    this.loginService.loginData = this.form.getRawValue();
+
     if(username && password) {
       this.loginService.login(username, password).subscribe({
-        next: (data) => {console.log("login executed", data), this.router.navigate(['dashboard'])},
+        next: (data: any) => {
+          console.log("login executed", data),
+          this.router.navigate(['dashboard']),
+          localStorage.setItem('data_login', data)
+        },
         error: (err) => console.log(err),
         complete: () => console.log("complete")
       })
