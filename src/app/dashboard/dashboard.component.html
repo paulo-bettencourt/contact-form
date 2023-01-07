@@ -1,3 +1,19 @@
-<p>Username: {{ data | json }}</p>
-<hr>
-<p>Password??: {{ data | json}}</p>
+<h1>
+  <span class="welcome-one">
+    You've successfully logged in
+  </span>
+  <span class="welcome-two">
+    Here is your data
+  </span>
+</h1>
+  <div class="contact-form">
+    <mat-form-field appearance="fill" class="mat-input">
+      <mat-label>Username</mat-label>
+      <input matInput value="{{data.login.username}}" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-input">
+      <mat-label>Password</mat-label>
+      <input matInput readonly value="{{data.login.password}}">
+    </mat-form-field>
+  </div>
+
