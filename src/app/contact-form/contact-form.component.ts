@@ -30,7 +30,7 @@ export class ContactFormComponent {
         next: (data: any) => {
           console.log("login executed", data),
           this.router.navigate(['dashboard']),
-          localStorage.setItem('data_login', data)
+          localStorage.setItem('data_login', JSON.stringify(data))
         },
         error: (err) => console.log(err),
         complete: () => console.log("complete")
