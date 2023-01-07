@@ -14,11 +14,13 @@ export class LoginResolver implements Resolve<Observable<any>> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
 
-    this.loginService.loginUsernameAndPassword.subscribe((data: any) => {console.log("dados do user", data), this.data = data})
+    console.log('Called Get Product in resolver...', this.loginService.loginUsernameAndPassword);
 
-    console.log('Called Get Product in resolver...', this.data);
+    return this.loginService.loginUsernameAndPassword;
 
-    return this.data;
   }
 
-}
+  }
+
+
+

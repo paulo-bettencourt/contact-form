@@ -23,7 +23,7 @@ set loginData(usernameAndPassword: Login) {
 }
 
 get loginUsernameAndPassword() {
-  return this.usernameAndPassword$;
+  return this.usernameAndPassword$.asObservable();
 }
 
 }
