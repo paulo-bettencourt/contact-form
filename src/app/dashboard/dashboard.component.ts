@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { LoginService } from '../services/login.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,7 +14,7 @@ export class DashboardComponent implements OnInit {
   dataUsername: any;
   dataPassword: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.data = this.route.snapshot.data;
@@ -20,6 +22,11 @@ export class DashboardComponent implements OnInit {
     this.dataPassword = this.route.snapshot.data['login'].password;
     console.log("resolver", this.data)
     console.log("USERNAMEEEE", this.dataUsername)
-  }
+
+
+    };
+
 
 }
+
+

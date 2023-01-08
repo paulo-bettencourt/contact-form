@@ -1,6 +1,9 @@
+import 'rxjs/add/operator/map';
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LoginService } from 'src/app/services/login.service';
 
 @Injectable({
@@ -12,11 +15,19 @@ export class LoginResolver implements Resolve<Observable<any>> {
 
   constructor(private loginService: LoginService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<any> {
+  async resolve(route: ActivatedRouteSnapshot): Promise<any> {
 
     console.log('Called Get Product in resolver...', this.loginService.loginUsernameAndPassword);
 
-    return this.loginService.loginUsernameAndPassword;
+    this.loginService.getLoginData()
+
+    const data = await this.loginService.getLoginData().pipe(map(v=>{
+      console.log("MADE IT THIS FAR", v);
+      return v;
+    }
+    )).toPromise()
+
+    return data;
 
   }
 

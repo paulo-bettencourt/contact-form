@@ -14,8 +14,12 @@ usernameAndPassword$ = new Subject<any>;
 
 constructor(private http: HttpClient) { }
 
-login(username: string, password: string) {
+login(username: string | null, password: string | null) {
   return this.http.post(this.urlLogin, {username, password})
+}
+
+getLoginData() {
+  return this.http.get('http://localhost:3000/loginData');
 }
 
 set loginData(usernameAndPassword: Login) {
@@ -23,7 +27,7 @@ set loginData(usernameAndPassword: Login) {
 }
 
 get loginUsernameAndPassword() {
-  return this.usernameAndPassword$.asObservable();
+  return this.usernameAndPassword$;
 }
 
 }

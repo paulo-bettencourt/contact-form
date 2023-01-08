@@ -25,9 +25,18 @@ app.get("/", (req, res) => {
   res.send(200);
 })
 
+let username;
+let password;
+
 app.post("/login", (req, res) => {
+  username = req.body.username;
+  password = req.body.password;
   console.log(req.body);
   res.send({username: req.body.username, password: req.body.password});
+})
+
+app.get("/loginData", (req, res) => {
+  res.send({username: username, password: password})
 })
 
 start();
