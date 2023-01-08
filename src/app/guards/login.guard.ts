@@ -11,7 +11,7 @@ export class LoginGuard implements CanActivate {
 
   guardBoolean!: boolean;
 
-  constructor(private loginService: LoginService, private router: Router) {console.log("??????")}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -19,7 +19,9 @@ export class LoginGuard implements CanActivate {
 
     if(localStorage.getItem('data_login')) {
       return true;
-    } else { return false }
+    } else {
+      this.router.navigate(([""]))
+      return false}
 
   }
 

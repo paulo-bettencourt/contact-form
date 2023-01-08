@@ -32,7 +32,13 @@ app.post("/login", (req, res) => {
   username = req.body.username;
   password = req.body.password;
   console.log(req.body);
-  res.send({username: req.body.username, password: req.body.password});
+  if(username === 'user' && password === '123') {
+    res.send({username: req.body.username, password: req.body.password});
+  } else {
+    res.status(400).send({
+      message: "Incorrect username and password"
+    })
+  }
 })
 
 app.get("/loginData", (req, res) => {

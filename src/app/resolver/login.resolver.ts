@@ -6,29 +6,23 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginService } from 'src/app/services/login.service';
 
+import { Login } from '../interfaces/login';
+
 @Injectable({
   providedIn: 'root'
 })
-export class LoginResolver implements Resolve<Observable<any>> {
-
-  data: any;
+export class LoginResolver implements Resolve<Observable<Login>> {
 
   constructor(private loginService: LoginService) {}
 
   async resolve(route: ActivatedRouteSnapshot): Promise<any> {
 
-    console.log('Called Get Product in resolver...', this.loginService.loginUsernameAndPassword);
-
-    this.loginService.getLoginData()
-
-    const data = await this.loginService.getLoginData().pipe(map(v=>{
-      console.log("MADE IT THIS FAR", v);
-      return v;
+    const data: Login  = await this.loginService.getLoginData().pipe(map((data: Login)=>{
+      return data;
     }
     )).toPromise()
 
     return data;
-
   }
 
   }
